@@ -3,8 +3,8 @@
 <head>
     <style>
       * {
-    box-sizing: border-box;
-}
+      box-sizing: border-box;
+      }
 
 body {
         background-image: url('bg.jpg');
@@ -16,6 +16,8 @@ body {
         font-family: "Microsoft YaHei", sans-serif;
         min-height: 100vh;
         margin: 0;
+
+        overflow-x: hidden;
       }
 
           .profile-card {
@@ -218,12 +220,137 @@ body {
           letter-spacing: 8px;
         }
 
+        .card-img {
+          width: 100%;
+          height: 180px;
+          overflow: hidden;
+        }
+
+        .card-img img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        .updates-section {
+          width: 100%;
+          box-sizing: border-box;
+          padding: 40px;
+          background-color: rgba(245, 245, 220, 0.85);
+          margin: 0 auto;
+          border-radius: 0;
+          box-shadow: none;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .updates-section h2 {
+          text-align: center;
+          color: #ff6b6b;
+          margin-bottom: 30px;
+          font-size: 28px;
+          width: 100%;
+
+          border-bottom: 1px solid #ccc; 
+          padding-bottom: 15px;
+        }
+
+        .updates-container {
+          width: 100%;
+          max-height: 400px;
+          overflow-y: auto;
+          padding-right: 10px;
+
+          scrollbar-width: thin;
+          scrollbar-color: #ffcccc #f1f1f1;
+        }
+
+        .update-item {
+          background: white;
+          padding: 20px;
+          border-radius: 8px;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+          margin-bottom: 20px;
+          border-left: 4px solid #ff6b6b;
+        }
+
+        .update-date {
+          font-size: 12px;
+          color: #999;
+          margin-bottom: 8px;
+          display: block;
+        }
+
+        .update-content {
+          font-size: 15px;
+          color: #333;
+          line-height: 1.6;
+        }
+
+        .update-img {
+          width: 100%;
+          max-width: 300px;
+          border-radius: 4px;
+          margin-top: 10px;
+          display: block;
+        }
+
+        .gallery-img {
+          cursor: pointer;
+          transition: transform 0.3s ease;
+        }
+
+        .gallery-img:hover {
+          transform: scale(1.02); 
+        }
+
+
+        .img-modal {
+          display: none; 
+          position: fixed; 
+          z-index: 9999; 
+          left: 0; top: 0;
+          width: 100%; height: 100%;
+          background-color: rgba(0, 0, 0, 0.85); 
+          overflow: auto;
+          animation: fadeIn 0.3s; 
+        }
+
+        .img-modal-content {
+          display: block;
+          margin: 5% auto; 
+          max-width: 90%;
+          max-height: 80vh;
+          border-radius: 8px;
+          box-shadow: 0 5px 30px rgba(0,0,0,0.5);
+          animation: zoomIn 0.3s; 
+        }
+
+        .img-modal-close {
+          position: absolute;
+          top: 20px; right: 35px;
+          color: #fff;
+          font-size: 40px;
+          font-weight: bold;
+          cursor: pointer;
+          transition: color 0.3s;
+        }
+
+        .img-modal-close:hover { color: #ff6b6b; }
+
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes zoomIn { from { transform: scale(0.8); } to { transform: scale(1); } }
+
 
     </style>
   <meta charset="UTF-8">
   <title>个人资历和介绍</title>
 </head>
 <body>
+  <audio id="bgMusic" src="simple.mp3" loop preload="auto"></audio>
+
   <div class="hero">
     <div class="hero-content">
       <h1>亦</h1>
@@ -265,19 +392,25 @@ body {
     <div class="portfolio-grid">
 
       <div class="card">
-        <div class="card-img">🌍</div>
+        <div class="card-img">
+          <img src="images/web.jpg" alt="个人网页开发" class="gallery-img">
+        </div>
         <h3>个人网页开发</h3>
         <p>使用HTML/CSS独立搭建，包含响应式布局与交互设计</p>
   </div>
 
   <div class="card">
-    <div class="card-img">🦆</div>
+    <div class="card-img">
+      <img src="images/python.jpg" alt="Python基础练习" class="gallery-img">
+    </div>
     <h3>Python基础练习</h3>
     <p>完成基础语法学习与简单逻辑脚本编写</p>
   </div>
 
   <div class="card">
-    <div class="card-img">☀️</div>
+    <div class="card-img">
+      <img src="images/wps.jpg" alt="WPS数据处理" class="gallery-img">
+    </div>
     <h3>WPS数据处理</h3>
     <p>高效整理复杂表格，制作可视化演示文稿</p>
   </div>
@@ -285,13 +418,43 @@ body {
     </div>
   </div>
 
+  <div class="updates-section">
+    <h2>最新动态</h2>
+
+    <div class="updates-container">
+
+      <div class="update-item">
+        <span class="update-date">2026-11-26</span>
+        <div class="update-content">
+          网站基础已完工
+        </div>
+      </div>
+
+    <div class="update-item">
+      <span class="update-date">2026-11-26</span>
+      <div class="update-content">
+        脚本练习，还不赖
+        <img src="images/python.jpg" alt="代码图" class="update-img">
+      </div>
+    </div>
+
+    <div class="update-item">
+      <span class="update-date">2026-11-27</span>
+      <div class="update-content">
+        开始进行内容补充。
+      </div>
+    </div>
+
+    </div>
+  </div>
+
   <footer class="contact-section">
-    <h2>请联系我</h2>
+    <h2>联系方式</h2>
     <hr>
     <div class="contact-info">
       <div class="contact-item">
         <span class="icon">📧</span>
-        <span class="text">邮箱：3132714763@qq.com</span>
+        <span class="text">邮箱：17520050326@163.com</span>
       </div>
       <div class="contact-item">
         <span class="icon">ℹ️</span>
@@ -305,5 +468,51 @@ body {
     <p class="copyright">2026 亦丨用心搭建™️</p>
   </footer>
 
+    <div id="imgModal" class="img-modal">
+      <span class="img-modal-close">&times;</span>
+      <img class="img-modal-content" id="imgModalContent">
+    </div>
+
+<script>
+const modal = document.getElementById('imgModal');
+const modalImg = document.getElementById('imgModalContent');
+const closeBtn = document.querySelector('.img-modal-close');
+
+document.querySelectorAll('.gallery-img').forEach(img => {
+  img.addEventListener('click', function() {
+    modal.style.display = 'block'; 
+    modalImg.src = this.src; 
+  });
+});
+
+closeBtn.addEventListener('click', function() {
+  modal.style.display = 'none';
+});
+
+modal.addEventListener('click', function(e) {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && modal.style.display === 'block') {
+    modal.style.display = 'none';
+  }
+});
+</script>
+
+        <script>
+          const music = document.getElementById('bgMusic');
+
+          function playMusicOnce() {
+            music.volume = 0.3;
+            music.play();
+
+            document.removeEventListener('click',playMusicOnce);
+          }
+
+          document.addEventListener('click',playMusicOnce);
+        </script>
 </body>
 </html>
