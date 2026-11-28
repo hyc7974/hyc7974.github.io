@@ -343,6 +343,68 @@ body {
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
         @keyframes zoomIn { from { transform: scale(0.8); } to { transform: scale(1); } }
 
+.memory-banner {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background: linear-gradient(135deg, #87CEEB 0%, #E0F6FF 100%); 
+    border-radius: 16px;
+    padding: 20px 30px;
+    margin: 40px 0;
+    text-decoration: none; 
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    transition: all 0.3s ease; 
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.memory-section {
+    background-color: rgba(245, 245, 220, 0.85);  
+    padding: 40px 0; 
+    width: 100%; 
+}
+
+.memory-banner:hover {
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 25px rgba(255,182,193,0.3); 
+    background: linear-gradient(135deg, #63b3ed 0%, #90cdf4 100%); 
+}
+
+.banner-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.banner-icon {
+    font-size: 2.5rem;
+    background: white;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.banner-text h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #d63384; 
+}
+
+.banner-text p {
+    margin: 5px 0 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.banner-arrow {
+    font-size: 1.5rem;
+    color: #d63384;
+    transition: transform 0.3s ease;
+}
+
+.memory-banner:hover .banner-arrow {
+    transform: translateX(10px); 
+}
 
     </style>
   <meta charset="UTF-8">
@@ -447,6 +509,23 @@ body {
 
     </div>
   </div>
+
+
+<div class="memory-section">
+
+  <a href="memory/memory.html" class="memory-banner">
+    <div class="banner-content">
+        <span class="banner-icon">📸</span>
+        <div class="banner-text">
+            <h3>进入我的回忆相册</h3>
+            <p>点击查看那些珍贵的瞬间...</p>
+        </div>
+    </div>
+    <div class="banner-arrow">→</div>
+</a>
+
+</div>
+
 
   <footer class="contact-section">
     <h2>联系方式</h2>
